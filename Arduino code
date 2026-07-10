@@ -1,0 +1,24 @@
+int led=11;
+int ldr=A0;
+int inputvoltage=A2;
+int sv,bri;
+void setup() {
+  // put your setup code here, to run once:
+pinMode(inputvoltage,INPUT);
+pinMode(led,OUTPUT);
+}
+void loop() {
+ // put your main code here, to run repeatedly:
+sv=analogRead(ldr);
+int ip=analogRead(inputvoltage);
+bri=map(sv,0,1023,0,255);
+float voltage=(ip*5.0)/1023.0;
+if(voltage<5.0)
+{
+ analogWrite(led,0);
+}
+else
+analogWrite(led,bri);
+}
+
+
